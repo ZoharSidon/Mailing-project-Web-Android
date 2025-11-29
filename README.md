@@ -1,10 +1,10 @@
-#Team members :
+
+# Mailing-project-Web-Android
+# Team members :
 Zohar Sidon
 Ofri Keidar
 Eyal Levy
 
-
-# Mailing-project-Web-Android
 # Project Overview
 
 This project implements a full-stack Gmail-style web application built as part of an academic assignment.
