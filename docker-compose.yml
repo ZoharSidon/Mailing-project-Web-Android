@@ -1,0 +1,50 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: server
+    stdin_open: true
+    tty: true
+    command: ["./run_bloomfilter", "1234", "256", "2", "1"]
+    networks:
+      - appnet
+    ports:
+      - "1234:1234"
+    volumes:
+      - bloomfilter_data:/usr/src/app/Data
+
+  # client:
+  #   build:
+  #     context: ./client
+  #     dockerfile: Dockerfile.client
+  #   container_name: client
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - server
+  #   networks:
+  #     - appnet
+  
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: web
+    working_dir: /usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    networks:
+      - appnet
+    environment:
+      - TCP_HOST=server
+      - TCP_PORT=1234
+
+volumes:
+  bloomfilter_data:
+
+networks:
+  appnet:

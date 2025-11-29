@@ -1,0 +1,26 @@
+# Use a basic C++ build environment
+FROM ubuntu:22.04
+
+# Install required tools and libraries
+RUN apt-get update && apt-get install -y \
+    g++ \
+    cmake \
+    make \
+    uuid-dev \
+    libjsoncpp-dev \
+    libnlohmann-json-dev \
+    netcat \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create app directory
+WORKDIR /app
+
+# Copy source code
+COPY . /app
+
+# Build project (assumes CMakeLists.txt exists and configured correctly)
+RUN cmake -S . -B build && cmake --build build
+
+# Run the server
+CMD ["./build/server"]

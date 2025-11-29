@@ -1,0 +1,11 @@
+FROM gcc:latest
+
+RUN apt-get update && apt-get install -y cmake git \
+&& rm -rf /var/lib/apt/lists/* 
+
+COPY . /usr/src/app
+WORKDIR /usr/src/app/build
+
+RUN cmake .. && make
+
+EXPOSE 1234
