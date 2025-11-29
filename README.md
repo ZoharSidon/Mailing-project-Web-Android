@@ -215,4 +215,4 @@ This project demonstrates a complete multi-service Gmail-like system with:
 * Cross-language blacklist validation over sockets
 * Deployment via Docker
 
-If you want, I can now **adapt this README בדיוק לתיקייה שהעלית**, כולל שמות קבצים, מבנה מדויק, והוראות הפעלה ספציפיות.
+
